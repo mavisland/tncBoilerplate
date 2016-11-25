@@ -25,8 +25,12 @@
     "url": "git+https://github.com/mavisland/tncBoilerplate.git"
   },
   "main": "gulpfile.js",
+  "scripts": {
+    "components": "gulp components"
+  },
   "devDependencies": {
     "browser-sync": "*",
+    "del": "*",
     "gulp": "*",
     "gulp-archiver": "*",
     "gulp-clean": "*",
@@ -37,6 +41,7 @@
     "gulp-less": "*",
     "gulp-rename": "*",
     "gulp-uglify": "*",
-    "gulp-util": "*"
+    "gulp-util": "*",
+    "main-bower-files": "^2.13.1"
   }
 }

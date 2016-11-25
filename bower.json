@@ -17,8 +17,47 @@
     "components-bootstrap": "components/bootstrap#^3.3.7",
     "components-font-awesome": "components/font-awesome#^4.7.0",
     "jquery": "components/jquery#^3.1.1",
+    "magnific-popup": "^1.1.0",
     "modernizr": "components/modernizr#^2.8.3",
-    "owl.carousel": "^2.2.0",
-    "magnific-popup": "^1.1.0"
+    "owl.carousel": "^2.2.0"
+  },
+  "overrides": {
+    "components-bootstrap": {
+      "main": [
+        "less/**/*.less",
+        "fonts/*.{eot,svg,ttf,woff,woff2}",
+        "js/*.js"
+      ]
+    },
+    "components-font-awesome": {
+      "main": [
+        "fonts/*.{eot,svg,ttf,woff,woff2}",
+        "less/*.less"
+      ]
+    },
+    "jquery": {
+      "main": [
+        "jquery.min.js"
+      ]
+    },
+    "magnific-popup": {
+      "main": [
+        "dist/*"
+      ]
+    },
+    "modernizr": {
+      "main": [
+        "modernizr.js"
+      ]
+    },
+    "owl.carousel": {
+      "main": [
+        "dist/owl.carousel.min.js",
+        "dist/assets/ajax-loader.gif",
+        "dist/assets/owl.carousel.css",
+        "dist/assets/owl.theme.default.css",
+        "dist/assets/owl.video.play.png"
+      ]
+    }
   }
 }
