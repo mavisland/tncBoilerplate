@@ -80,18 +80,18 @@ var inputFiles = {
     '!' + paths.templates + '_*.ejs'
   ],
   jsInputFiles       : [
-    paths.components + 'bootstrap/js/transition.js',
-    paths.components + 'bootstrap/js/alert.js',
-    paths.components + 'bootstrap/js/button.js',
-    paths.components + 'bootstrap/js/carousel.js',
-    paths.components + 'bootstrap/js/collapse.js',
-    paths.components + 'bootstrap/js/dropdown.js',
-    paths.components + 'bootstrap/js/modal.js',
-    paths.components + 'bootstrap/js/tooltip.js',
-    paths.components + 'bootstrap/js/popover.js',
-    paths.components + 'bootstrap/js/scrollspy.js',
-    paths.components + 'bootstrap/js/tab.js',
-    paths.components + 'bootstrap/js/affix.js',
+    paths.components + 'components-bootstrap/js/transition.js',
+    paths.components + 'components-bootstrap/js/alert.js',
+    paths.components + 'components-bootstrap/js/button.js',
+    paths.components + 'components-bootstrap/js/carousel.js',
+    paths.components + 'components-bootstrap/js/collapse.js',
+    paths.components + 'components-bootstrap/js/dropdown.js',
+    paths.components + 'components-bootstrap/js/modal.js',
+    paths.components + 'components-bootstrap/js/tooltip.js',
+    paths.components + 'components-bootstrap/js/popover.js',
+    paths.components + 'components-bootstrap/js/scrollspy.js',
+    paths.components + 'components-bootstrap/js/tab.js',
+    paths.components + 'components-bootstrap/js/affix.js',
     paths.components + 'magnific-popup/jquery.magnific-popup.min.js',
     paths.components + 'owl-carousel/owl.carousel.min.js',
     paths.scripts + 'scripts.js'
@@ -176,30 +176,47 @@ gulp.task("templates", function() {
 
 // Copy vendor files from 'components' into 'dist'
 gulp.task('copy', function() {
-  gulp.src([
-    paths.components + 'jquery/jquery.min.js',
-    paths.components + 'modernizr/modernizr.js'
-  ])
-    .pipe(gulp.dest('dist/js'));
+  // Modernizr
+  gulp.src('src/components/modernizr/modernizr.js')
+    .pipe(uglify())
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(gulp.dest(paths.build + 'js/'));
 
+  // Vendor Javascript files
+  gulp.src([
+    paths.components + 'jquery/jquery.min.js'
+  ])
+    .pipe(gulp.dest(paths.build + 'js/'));
+
+  // Icon fonts
   gulp.src([
     paths.components + 'bootstrap/fonts/*.{eot,svg,ttf,woff,woff2}',
     paths.components + 'font-awesome/fonts/*.{eot,svg,ttf,woff,woff2}'
   ])
-    .pipe(gulp.dest('dist/fonts'));
+    .pipe(gulp.dest(paths.build + 'fonts/'));
+
+  // Images
+  gulp.src([
+    paths.components + 'owl.carousel/dist/assets/*.{gif,png}',
+    paths.assets + 'images/*'
+  ])
+    .pipe(gulp.dest(paths.build + 'images/'));
+
+  // humans.txt / robots.txt
+  gulp.src([
+    paths.assets + 'humans.txt',
+    paths.assets + 'robots.txt'
+  ])
+    .pipe(gulp.dest(paths.build));
 });
 
 // Configure the browserSync task
 gulp.task('browserSync', function() {
   browserSync.init({
-    ui: {
-      port: 3944
-    },
     server: {
       baseDir: paths.build,
       index: "index.html"
-    },
-    port: 7947
+    }
   });
 });
 
