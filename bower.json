@@ -1,0 +1,24 @@
+{
+  "name": "tncboilerplate",
+  "version": "1.0.0",
+  "authors": [
+    "Tanju Yildiz <ben@tanjuyildiz.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "components-bootstrap": "components/bootstrap#^3.3.7",
+    "components-font-awesome": "components/font-awesome#^4.7.0",
+    "jquery": "components/jquery#^3.1.1",
+    "modernizr": "components/modernizr#^2.8.3",
+    "owl.carousel": "^2.2.0",
+    "magnific-popup": "^1.1.0"
+  }
+}
